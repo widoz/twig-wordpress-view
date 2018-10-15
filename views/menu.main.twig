@@ -1,0 +1,12 @@
+<nav id="{{ nav.attributes.id }}" class="{{ nav.attributes.class }}">
+    {% if link.attributes.href %}
+        <a href="{{ link.attributes.href }}"
+           id="{{ link.attributes.id }}"
+           class="{{ link.attributes.class }}">
+
+            {{ link.text }}
+        </a>
+    {% endif %}
+
+    {{ wp_nav_menu(arguments) }}
+</nav>

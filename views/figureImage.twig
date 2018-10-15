@@ -1,0 +1,10 @@
+{% if image.attributes.url %}
+    <figure class="{{ figure.attributes.class }}">
+        {% include 'image.twig' with image %}
+        {% if figcaption.text %}
+            <figcaption class="{{ figcaption.attributes.class }}">
+                {{ figcaption.text }}
+            </figcaption>
+        {% endif %}
+    </figure>
+{% endif %}

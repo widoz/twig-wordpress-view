@@ -1,0 +1,9 @@
+{% if list.links|length > 0 %}
+    <div class="{{ container.attributes.class }}">
+        <ul class="{{ list.attributes.class }}">
+            {% for link in list.links %}
+                {{ wp_kses_post(link)|raw }}
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}

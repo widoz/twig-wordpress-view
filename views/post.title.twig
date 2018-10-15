@@ -1,0 +1,11 @@
+{% if not link.attributes.href %}
+    <h1 class="{{ title.attributes.class }}">
+        {{ title.text }}
+    </h1>
+{% else %}
+    <h2 class="{{ title.attributes.class }}">
+        <a class="{{ link.attributes.class }}" href="{{ link.attributes.href }}">
+            {{ title.text }}
+        </a>
+    </h2>
+{% endif %}

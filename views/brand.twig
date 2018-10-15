@@ -1,0 +1,21 @@
+<div class="{{ container.attributes.class }}">
+    <a class="{{ link.attributes.class }}"
+       href="{{ link.attributes.href }}"
+       style="{{ link.attributes.style }}">
+
+        {% if image %}
+            {% include 'image.twig' with image %}
+            <span class="screen-reader-text">
+                {{ name|esc_html }}
+            </span>
+        {% else %}
+            {{ name|esc_html }}
+        {% endif %}
+    </a>
+
+    {% if description.text %}
+        <p class="{{ description.attributes.class }}">
+            {{ wp_kses_post(description.text)|raw }}
+        </p>
+    {% endif %}
+</div>

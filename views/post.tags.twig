@@ -1,0 +1,8 @@
+{% if terms.items %}
+    <section class="{{ container.attributes.class }}">
+        <h5 class="{{ title.attributes.class }}">
+            {{ title.text }}
+        </h5>
+        {% include 'terms.twig' with terms %}
+    </section>
+{% endif %}

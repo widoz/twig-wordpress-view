@@ -1,0 +1,7 @@
+{% if link.attributes.href %}
+    <a href="{{ link.attributes.href }}">
+        {% include 'figureImage.twig' with figure %}
+    </a>
+{% else %}
+    {% include 'figureImage.twig' with figure %}
+{% endif %}

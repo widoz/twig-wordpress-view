@@ -1,0 +1,15 @@
+<header class="{{ container.attributes.class }}">
+
+    {% if title.text %}
+        <h1 class="{{ title.attributes.class }}">
+            {{ title.text }}
+        </h1>
+    {% endif %}
+
+    {% if description.text %}
+        <p class="{{ description.attributes.class }}">
+            {{ description.text }}
+        </p>
+    {% endif %}
+
+</header>

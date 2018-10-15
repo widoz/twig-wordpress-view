@@ -1,0 +1,9 @@
+{% if terms.items %}
+    <div class="{{ container.attributes.class }}">
+        <span class="{{ title.attributes.class }}">
+            {{ title.text }}
+        </span>
+
+        {% include 'terms.twig' with terms %}
+    </div>
+{% endif %}

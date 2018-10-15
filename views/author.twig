@@ -1,0 +1,11 @@
+{% if name %}
+    <span class="{{ container.attributes.class }}">
+        {% if link.attributes.href %}
+        <a href="{{ link.attributes.href }}" class="{{ link.attributes.class }}" rel="author">
+            {% endif %}
+            {{ name }}
+            {% if link.attributes.href %}
+        </a>
+        {% endif %}
+    </span>
+{% endif %}

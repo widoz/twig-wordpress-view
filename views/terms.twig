@@ -1,0 +1,9 @@
+<ul class="{{ terms.attributes.class }}">
+    {% for term in terms.items %}
+        <li class="{{ term.attributes.class }}">
+            <a href="{{ term.link.attributes.href }}" class="{{ term.link.attributes.class }}">
+                {{ term.name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

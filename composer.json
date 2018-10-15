@@ -1,0 +1,52 @@
+{
+  "name": "twigwp/twig-wordpress-view",
+  "type": "wordpress-plugin",
+  "description": "WordPress Twig Views",
+  "keywords": [
+    "wordpress",
+    "plugin",
+    "psr",
+    "autoloader",
+    "composer"
+  ],
+  "homepage": "https://github.com/widoz/twig-wordpress-view",
+  "license": "GPL-2.0-only",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "authors": [
+    {
+      "name": "Guido Scialfa",
+      "email": "dev@guidoscialfa.com",
+      "homepage": "http://www.guidoscialfa.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/widoz/twig-wordpress-view/issues"
+  },
+  "autoload": {
+    "classmap": [
+      "src/"
+    ],
+    "psr-4": {
+      "TwigWordPressView\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TwigWordPressView\\Tests\\": "tests",
+      "TwigWordPressView\\Tests\\Unit\\": "tests/unit/src",
+      "TwigWordPressView\\Tests\\Integration\\": "tests/integration/src"
+    }
+  },
+  "require": {
+    "php": ">=7.1",
+    "twigwp/twig-wordpress": "dev-develop",
+    "widoz/wordpress-model": "dev-develop"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~6.5.5",
+    "brain/monkey": "dev-master",
+    "inpsyde/php-coding-standards": "^0.13.3"
+  }
+}
