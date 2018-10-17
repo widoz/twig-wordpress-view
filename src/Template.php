@@ -28,9 +28,9 @@ class Template
     /**
      * Template constructor.
      *
-     * @param TwigController $controller
+     * @param Controller $controller
      */
-    public function __construct(TwigController $controller)
+    public function __construct(Controller $controller)
     {
         $this->controller = $controller;
     }
