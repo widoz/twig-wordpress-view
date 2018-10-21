@@ -42,12 +42,12 @@
   "require": {
     "php": ">=7.1",
     "twigwp/twig-wordpress": "dev-develop",
-    "widoz/wordpress-model": "dev-develop",
     "widoz/wordpress-template": "dev-develop"
   },
   "require-dev": {
     "phpunit/phpunit": "~6.5.5",
     "brain/monkey": "dev-master",
-    "inpsyde/php-coding-standards": "^0.13.3"
+    "inpsyde/php-coding-standards": "^0.13.3",
+    "widoz/wordpress-model": "dev-develop"
   }
 }

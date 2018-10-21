@@ -15,6 +15,8 @@ namespace TwigWordPressView;
 
 use Twig;
 use Twig\Error\Error as TwigError;
+use WordPressTemplate\Controller;
+use WordPressTemplate\Data;
 
 /**
  * Class TemplateRender
@@ -40,6 +42,9 @@ final class TwigController implements Controller
      * @inheritdoc
      *
      * @param TwigData $data
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function render(Data $data): void
     {
@@ -56,10 +61,13 @@ final class TwigController implements Controller
     }
 
     /**
-     * Load the template
+     * Load Template Data
      *
      * @param string $path
-     * @return \Twig_TemplateWrapper The instance for chaining.
+     * @return null|\Twig_TemplateWrapper
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     private function twigLoad(string $path): ?\Twig_TemplateWrapper
     {
