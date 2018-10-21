@@ -1,6 +1,6 @@
 <?php # -*- coding: utf-8 -*-
 /**
- * Plugin Name: WordPress Model
+ * Plugin Name: Twig WordPress View
  * Plugin URI: http://github.com/widoz/twig-wordpress-view
  * Author: Guido Scialfa
  * Author URI: https://guidoscialfa.com
