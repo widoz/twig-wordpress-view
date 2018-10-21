@@ -43,7 +43,7 @@
     "php": ">=7.1",
     "twigwp/twig-wordpress": "dev-develop",
     "widoz/wordpress-model": "dev-develop",
-    "widoz/wordpress-template": "dev-master"
+    "widoz/wordpress-template": "dev-develop"
   },
   "require-dev": {
     "phpunit/phpunit": "~6.5.5",
