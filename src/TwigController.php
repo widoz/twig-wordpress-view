@@ -16,7 +16,7 @@ namespace TwigWordPressView;
 use Twig;
 use Twig\Error\Error as TwigError;
 use WordPressTemplate\Controller;
-use WordPressTemplate\Data;
+use WordPressTemplate\ViewData;
 
 /**
  * Class TemplateRender
@@ -46,7 +46,7 @@ final class TwigController implements Controller
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function render(Data $data): void
+    public function render(ViewData $data): void
     {
         $modelData = $data->model()->data();
         $templatePath = $data->templatePath();

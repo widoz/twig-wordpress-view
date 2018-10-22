@@ -14,14 +14,14 @@ declare(strict_types=1);
 namespace TwigWordPressView;
 
 use WordPressModel\Model;
-use WordPressTemplate\Data;
+use WordPressTemplate\ViewData;
 
 /**
  * Class TwigData
  *
  * @author Guido Scialfa <dev@guidoscialfa.com>
  */
-class TwigData implements Data
+class TwigData implements ViewData
 {
     /**
      * @var Model
