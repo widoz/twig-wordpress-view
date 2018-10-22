@@ -53,10 +53,14 @@ namespace TwigWordPressView;
             adminNotice(
                 sprintf(
                 // translators: %s Is the name of the plugin.
-                    __('%s: No autoloader found, plugin cannot load properly.',
-                        'twig-wordpress-view'),
-                    '<strong>' . esc_html__('Twig WordPress View',
-                        'twig-wordpress-view') . '</strong>'
+                    __(
+                        '%s: No autoloader found, plugin cannot load properly.',
+                        'twig-wordpress-view'
+                    ),
+                    sprintf(
+                        '<strong>%s</strong>',
+                        esc_html__('Twig WordPress View', 'twig-wordpress-view')
+                    )
                 ),
                 'error',
                 ['strong' => true]
