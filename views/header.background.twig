@@ -1,11 +1,9 @@
-{% if markup %}
+{% if image.markup %}
     <div class="{{ container.attributes.class }}">
-        {{ markup }}
+        {{ image.markup|raw }}
     </div>
 {% endif %}
 
-{% if not markup and image %}
-    <a href="{{ link.attributes.href }}" class="{{ link.attributes.class }}">
-        {{ image.markup|raw }}
-    </a>
+{% if not image.markup and markup %}
+    {{ markup|raw }}
 {% endif %}
