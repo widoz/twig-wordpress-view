@@ -28,11 +28,6 @@ class FigureAttachmentTemplateTest extends TestCase
             ->once()
             ->andReturn(true);
 
-        Functions\expect('wp_get_attachment_image_url')
-            ->once()
-            ->with(1, '')
-            ->andReturn('image_url');
-
         Functions\expect('wp_get_attachment_caption')
             ->once()
             ->with(1)
@@ -42,6 +37,15 @@ class FigureAttachmentTemplateTest extends TestCase
             ->once()
             ->with(1, '_wp_attachment_image_alt', true)
             ->andReturn('alt');
+
+        Functions\expect('wp_get_attachment_image_src')
+            ->once()
+            ->andReturn([
+                'Image Url',
+                50,
+                50,
+                true
+            ]);
 
         $twigFactory = new Factory(
             new \Twig_Loader_Filesystem([
@@ -61,7 +65,7 @@ class FigureAttachmentTemplateTest extends TestCase
         $output = parent::cleanMarkup(ob_get_clean());
 
         self::assertSame(
-            '<figure class="block"><img src="image_url" class="block__image" alt="alt" /><figcaption class="block__caption">caption test</figcaption></figure>',
+            '<figure class="block"><img src="image_url" class="block__image" alt="alt" width="50" height="50" /><figcaption class="block__caption">caption test</figcaption></figure>',
             $output
         );
     }

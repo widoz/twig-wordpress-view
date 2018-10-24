@@ -49,15 +49,19 @@ class PostThumbnailTest extends TestCase
             ->with(1)
             ->andReturn(true);
 
-        Functions\expect('wp_get_attachment_image_url')
-            ->once()
-            ->with(1, 'post-thumbnail')
-            ->andReturn('image_url');
-
         Functions\expect('get_post_meta')
             ->once()
             ->with(1, '_wp_attachment_image_alt', true)
             ->andReturn('alt');
+
+        Functions\expect('wp_get_attachment_image_src')
+            ->once()
+            ->andReturn([
+                'Image Url',
+                50,
+                50,
+                true
+            ]);
 
         $twigFactory = new Factory(
             new \Twig_Loader_Filesystem([
@@ -74,7 +78,7 @@ class PostThumbnailTest extends TestCase
         $output = parent::cleanMarkup(ob_get_clean());
 
         self::assertSame(
-            '<a href="permalink"><figure class="thumbnail"><img src="image_url" class="thumbnail__image" alt="alt" /><figcaption class="thumbnail__caption">Caption</figcaption></figure></a>',
+            '<a href="permalink"><figure class="thumbnail"><img src="image_url" class="thumbnail__image" alt="alt" width="50" height="50" /><figcaption class="thumbnail__caption">Caption</figcaption></figure></a>',
             $output
         );
     }

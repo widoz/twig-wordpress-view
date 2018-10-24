@@ -27,9 +27,6 @@ class BrandTest extends TestCase
         Functions\when('wp_attachment_is_image')
             ->justReturn(true);
 
-        Functions\when('wp_get_attachment_image_url')
-            ->justReturn('Image Url');
-
         Functions\when('get_post_meta')
             ->justReturn('post meta');
 
@@ -62,6 +59,15 @@ class BrandTest extends TestCase
             ->with('/')
             ->andReturn('/');
 
+        Functions\expect('wp_get_attachment_image_src')
+            ->once()
+            ->andReturn([
+                'Image Url',
+                50,
+                50,
+                true,
+            ]);
+
         Functions\expect('wp_kses_post')
             ->once()
             ->andReturnFirstArg();
@@ -81,7 +87,7 @@ class BrandTest extends TestCase
         $output = parent::cleanMarkup(ob_get_clean());
 
         self::assertSame(
-            '<div class="brand"><a class="brand__link" href="/" style="color:#fff"><img src="Image Url" class="brand-logo__image" alt="post meta" /><span class="screen-reader-text">Site Name</span></a><p class="brand__description">Site Description</p></div>',
+            '<div class="brand"><a class="brand__link" href="/" style="color:#fff"><img src="Image Url" class="brand__image" alt="post meta" width="50" height="50" /><span class="screen-reader-text">Site Name</span></a><p class="brand__description">Site Description</p></div>',
             $output
         );
     }
@@ -101,9 +107,6 @@ class BrandTest extends TestCase
 
         Functions\when('wp_attachment_is_image')
             ->justReturn(true);
-
-        Functions\when('wp_get_attachment_image_url')
-            ->justReturn('Image Url');
 
         Functions\when('get_post_meta')
             ->justReturn('post meta');
@@ -177,9 +180,6 @@ class BrandTest extends TestCase
         Functions\when('wp_attachment_is_image')
             ->justReturn(true);
 
-        Functions\when('wp_get_attachment_image_url')
-            ->justReturn('Image Url');
-
         Functions\when('get_post_meta')
             ->justReturn('post meta');
 
@@ -212,6 +212,15 @@ class BrandTest extends TestCase
             ->with('/')
             ->andReturn('/');
 
+        Functions\expect('wp_get_attachment_image_src')
+            ->once()
+            ->andReturn([
+                'Image Url',
+                50,
+                50,
+                true,
+            ]);
+
         $twigFactory = new Factory(
             new \Twig_Loader_Filesystem([
                 TWIG_WP_VIEW_TEST_BASE_DIR . '/views/',
@@ -227,7 +236,7 @@ class BrandTest extends TestCase
         $output = parent::cleanMarkup(ob_get_clean());
 
         self::assertSame(
-            '<div class="brand"><a class="brand__link" href="/" style="color:#fff"><img src="Image Url" class="brand-logo__image" alt="post meta" /><span class="screen-reader-text">Site Name</span></a></div>',
+            '<div class="brand"><a class="brand__link" href="/" style="color:#fff"><img src="Image Url" class="brand__image" alt="post meta" width="50" height="50" /><span class="screen-reader-text">Site Name</span></a></div>',
             $output
         );
     }
