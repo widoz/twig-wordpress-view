@@ -6,6 +6,6 @@
 
 {% if not markup and image %}
     <a href="{{ link.attributes.href }}" class="{{ link.attributes.class }}">
-        {{ image.markup }}
+        {{ image.markup|raw }}
     </a>
 {% endif %}
