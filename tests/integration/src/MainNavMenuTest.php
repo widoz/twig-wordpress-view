@@ -13,10 +13,18 @@ class MainNavMenuTest extends TestCase
 {
     public function testHtmlOutputContainsJumpToContentLink()
     {
+        Functions\stubs([
+            'wp_nav_menu' => function () {
+                return 'Menu Nav HTML';
+            },
+        ]);
+
         Functions\expect('has_nav_menu')
+            ->once()
             ->andReturn(true);
 
         Functions\expect('wp_nav_menu')
+            ->once()
             ->andReturn('Menu Nav HTML');
 
         $twigFactory = new Factory(
