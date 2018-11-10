@@ -41,7 +41,7 @@ class FigureAttachmentTemplateTest extends TestCase
         Functions\expect('wp_get_attachment_image_src')
             ->once()
             ->andReturn([
-                'Image Url',
+                'image_url',
                 50,
                 50,
                 true

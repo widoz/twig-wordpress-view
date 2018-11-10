@@ -65,6 +65,7 @@ final class TwigController implements Controller
      *
      * @param string $path
      * @return null|\Twig_TemplateWrapper
+     * @throws TwigError
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
@@ -75,7 +76,7 @@ final class TwigController implements Controller
             return $this->twigEnv->load($path);
         } catch (TwigError $exc) {
             if (defined('WP_DEBUG') && WP_DEBUG) {
-                throw new $exc;
+                throw $exc;
             }
         }
     }
