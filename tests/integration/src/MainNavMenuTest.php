@@ -17,9 +17,8 @@ class MainNavMenuTest extends TestCase
             ->once()
             ->andReturn(true);
 
-        Functions\expect('wp_nav_menu')
-            ->once()
-            ->andReturn('Menu Nav HTML');
+        Functions\when('wp_nav_menu')
+            ->justReturn('Menu Nav HTML');
 
         $twigFactory = new Factory(
             new \Twig_Loader_Filesystem([
