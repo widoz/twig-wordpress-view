@@ -13,7 +13,7 @@ class MainNavMenuTest extends TestCase
 {
     public function testHtmlOutputContainsJumpToContentLink()
     {
-        Functions\expect('has_nav_menu')
+        Functions\when('has_nav_menu')
             ->once()
             ->andReturn(true);
 
