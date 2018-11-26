@@ -14,8 +14,7 @@ class MainNavMenuTest extends TestCase
     public function testHtmlOutputContainsJumpToContentLink()
     {
         Functions\when('has_nav_menu')
-            ->once()
-            ->andReturn(true);
+            ->justReturn(true);
 
         Functions\when('wp_nav_menu')
             ->justReturn('Menu Nav HTML');
