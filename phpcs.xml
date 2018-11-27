@@ -8,7 +8,6 @@
     <config name="testVersion" value="7.1-"/>
 
     <file>./src</file>
-    <file>./partials</file>
 
     <config name="text_domain" value="twig-wordpress-view"/>
 
