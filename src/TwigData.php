@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace TwigWordPressView;
 
-use WordPressModel\Model;
+use WordPressModel\Model\Model;
 use WordPressTemplate\ViewData;
 
 /**
