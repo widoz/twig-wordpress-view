@@ -3,7 +3,7 @@
 namespace TwigWordPressView\Tests\Unit\Template;
 
 use TwigWp\Factory;
-use WordPressTemplate\ViewData;
+use WordPressTemplate\ViewModel;
 use TwigWordPressView\TwigController;
 use TwigWordPressView\Tests\TestCase;
 use WordPressModel\Model;
@@ -25,7 +25,7 @@ class ControllerTest extends TestCase
         $twigFactory = new Factory(new \Twig\Loader\ArrayLoader([
             'test.twig' => 'This is a {{test}}',
         ]), []);
-        $data = new class implements ViewData
+        $data = new class implements ViewModel
         {
             public function model(): Model
             {
