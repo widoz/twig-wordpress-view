@@ -14,14 +14,14 @@ declare(strict_types=1);
 namespace TwigWordPressView;
 
 use WordPressModel\Model\Model;
-use WordPressTemplate\ViewData;
+use WordPressTemplate\ViewModel;
 
 /**
  * Class TwigData
  *
  * @author Guido Scialfa <dev@guidoscialfa.com>
  */
-class TwigData implements ViewData
+class TwigData implements ViewModel
 {
     /**
      * @var Model
@@ -46,11 +46,11 @@ class TwigData implements ViewData
     }
 
     /**
-     * @return Model
+     * @return mixed
      */
-    public function model(): Model
+    public function model()
     {
-        return $this->model;
+        return $this->model->data();
     }
 
     /**

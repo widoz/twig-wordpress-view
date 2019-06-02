@@ -13,10 +13,12 @@ declare(strict_types=1);
 
 namespace TwigWordPressView;
 
+use Error;
 use Twig;
 use Twig\Error\Error as TwigError;
+use Twig\TemplateWrapper;
 use WordPressTemplate\Controller;
-use WordPressTemplate\ViewData;
+use WordPressTemplate\ViewModel;
 
 /**
  * Class TemplateRender
@@ -24,32 +26,32 @@ use WordPressTemplate\ViewData;
 final class TwigController implements Controller
 {
     /**
-     * @var \Twig_Environment Instance of the class
+     * @var Twig\Environment Instance of the class
      */
-    private $twigEnv;
+    private $env;
 
     /**
      * TemplateRender constructor
      *
-     * @param Twig\Environment $twigEnv
+     * @param Twig\Environment $env
      */
-    public function __construct(Twig\Environment $twigEnv)
+    public function __construct(Twig\Environment $env)
     {
-        $this->twigEnv = $twigEnv;
+        $this->env = $env;
     }
 
     /**
      * @inheritdoc
      *
-     * @param TwigData $data
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * @param TwigData $model
+     * @throws Twig\Error\LoaderError
+     * @throws Twig\Error\RuntimeError
+     * @throws Twig\Error\SyntaxError
      */
-    public function render(ViewData $data): void
+    public function render(ViewModel $model): void
     {
-        $modelData = $data->model()->data();
-        $templatePath = $data->templatePath();
+        $modelData = $model->model();
+        $templatePath = $model->templatePath();
 
         if (!$modelData) {
             return;
@@ -64,17 +66,17 @@ final class TwigController implements Controller
      * Load Template Data
      *
      * @param string $path
-     * @return null|\Twig_TemplateWrapper
+     * @return TemplateWrapper
      * @throws TwigError
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * @throws Twig\Error\LoaderError
+     * @throws Twig\Error\RuntimeError
+     * @throws Twig\Error\SyntaxError
      */
-    private function twigLoad(string $path): ?\Twig_TemplateWrapper
+    protected function twigLoad(string $path): TemplateWrapper
     {
         try {
-            return $this->twigEnv->load($path);
-        } catch (TwigError $exc) {
+            return $this->env->load($path);
+        } catch (Error $exc) {
             if (defined('WP_DEBUG') && WP_DEBUG) {
                 throw $exc;
             }
